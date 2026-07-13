@@ -1,0 +1,11 @@
+# Code of Conduct
+
+This project follows the [Contributor Covenant v2.1][covenant].
+
+In short: be respectful, assume good faith, no harassment. Unacceptable
+behavior can be reported to **info@fabiocicerchia.it**. Maintainers will review
+and act on reports confidentially.
+
+Full text: <https://www.contributor-covenant.org/version/2/1/code_of_conduct/>
+
+[covenant]: https://www.contributor-covenant.org/version/2/1/code_of_conduct/

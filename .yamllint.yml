@@ -1,0 +1,15 @@
+extends: default
+
+rules:
+  # SHA-pinned `uses:` lines (action@<40-char-sha> # vX) exceed 80 chars.
+  line-length:
+    max: 140
+    level: warning
+  document-start: disable
+  # SHA-pin comments (`@sha # v4`) use one space, per GitHub/dependabot convention.
+  comments:
+    min-spaces-from-content: 1
+  comments-indentation: disable
+  # GitHub Actions `on:` is a valid key, not the boolean "on".
+  truthy:
+    check-keys: false
