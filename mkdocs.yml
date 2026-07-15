@@ -1,0 +1,15 @@
+site_name: kubectl-plus
+site_url: https://fabiocicerchia.github.io/kubectl-plus
+site_description: kubectl + jq + yq + curl + envsubst in one small, version-pinned, multi-arch image.
+repo_url: https://github.com/fabiocicerchia/kubectl-plus
+repo_name: fabiocicerchia/kubectl-plus
+
+theme:
+  name: material
+
+nav:
+  - Home: README.md
+  - Getting Started: getting-started.md
+  - Architecture: architecture.md
+
+docs_dir: docs
