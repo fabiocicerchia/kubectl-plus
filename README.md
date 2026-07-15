@@ -1,7 +1,10 @@
 # kubectl-plus
 
 [![CI](https://github.com/fabiocicerchia/kubectl-plus/actions/workflows/ci.yml/badge.svg)](https://github.com/fabiocicerchia/kubectl-plus/actions/workflows/ci.yml)
+[![Security](https://github.com/fabiocicerchia/kubectl-plus/actions/workflows/security.yml/badge.svg)](https://github.com/fabiocicerchia/kubectl-plus/actions/workflows/security.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/fabiocicerchia/kubectl-plus/badge)](https://securityscorecards.dev/viewer/?uri=github.com/fabiocicerchia/kubectl-plus)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffabiocicerchia%2Fkubectl-plus.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffabiocicerchia%2Fkubectl-plus?ref=badge_shield)
 
 `kubectl` + `jq` + `yq` + `curl` + `envsubst` (+ bash) in one small,
 version-pinned, multi-arch image — the actual toolset every in-cluster
@@ -21,6 +24,18 @@ Stop building the same ad-hoc "kubectl but with jq" image in every project.
 | `bash`     | Alpine package                  | glue                             |
 
 Runs as non-root (UID 10001). Tags mirror the bundled kubectl version.
+
+## Install
+
+```sh
+docker pull ghcr.io/fabiocicerchia/kubectl-plus:latest
+```
+
+Or pin a specific version (mirrors the bundled kubectl version):
+
+```sh
+docker pull ghcr.io/fabiocicerchia/kubectl-plus:1.33.2
+```
 
 ## Usage
 
