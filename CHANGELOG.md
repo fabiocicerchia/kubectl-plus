@@ -18,3 +18,5 @@ the bundled kubectl version.
 - Pinned apk package versions and GitHub Actions to commit SHAs for
   reproducible, supply-chain-hardened builds.
 - Scoped `release` workflow token permissions to the job level.
+- Bumped pinned `curl`, `bash`, and `gettext` apk versions to match the
+  `alpine:3.24` repo (the alpine bump left them stale, breaking `make build`).
