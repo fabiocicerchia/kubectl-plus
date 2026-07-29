@@ -4,7 +4,6 @@
 [![Security](https://github.com/fabiocicerchia/kubectl-plus/actions/workflows/security.yml/badge.svg)](https://github.com/fabiocicerchia/kubectl-plus/actions/workflows/security.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/fabiocicerchia/kubectl-plus/badge)](https://securityscorecards.dev/viewer/?uri=github.com/fabiocicerchia/kubectl-plus)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffabiocicerchia%2Fkubectl-plus.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffabiocicerchia%2Fkubectl-plus?ref=badge_shield)
 [![Release](https://img.shields.io/github/v/release/fabiocicerchia/kubectl-plus)](https://github.com/fabiocicerchia/kubectl-plus/releases)
 
 `kubectl` + `jq` + `yq` + `curl` + `envsubst` (+ bash) in one small,
