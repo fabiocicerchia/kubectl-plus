@@ -29,6 +29,7 @@ LABEL org.opencontainers.image.title="kubectl-plus" \
 # gettext provides envsubst
 RUN apk add --no-cache bash=5.3.9-r1 curl=8.21.0-r0 jq=1.8.1-r0 gettext=1.0-r0 ca-certificates=20260611-r0 \
  && adduser -D -u 10001 automation
+COPY NOTICE /NOTICE
 COPY --from=fetch /kubectl /usr/local/bin/kubectl
 COPY --from=fetch /yq /usr/local/bin/yq
 USER 10001
