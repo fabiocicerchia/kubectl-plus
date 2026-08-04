@@ -24,7 +24,7 @@ ARG KUBECTL_VERSION
 LABEL org.opencontainers.image.title="kubectl-plus" \
       org.opencontainers.image.description="kubectl + jq + yq + curl + envsubst for in-cluster automation jobs" \
       org.opencontainers.image.version="${KUBECTL_VERSION}" \
-      org.opencontainers.image.licenses="Apache-2.0" \
+      org.opencontainers.image.licenses="Apache-2.0 AND GPL-3.0-or-later AND MIT" \
       org.opencontainers.image.source="https://github.com/fabiocicerchia/kubectl-plus"
 # gettext provides envsubst
 RUN apk add --no-cache bash=5.3.9-r1 curl=8.21.0-r0 jq=1.8.1-r0 gettext=1.0-r0 ca-certificates=20260611-r0 \
