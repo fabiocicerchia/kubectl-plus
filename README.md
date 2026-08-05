@@ -65,6 +65,10 @@ The entrypoint is `bash -c`, so a Job's `args` can be a plain script string.
 `make build` / `make lint` / `make test` / `make release` (multi-arch push).
 Override the kubectl version with `make build VERSION=1.32.6`.
 
+## Documentation
+
+Full docs live in [`docs/`](docs/). Runnable examples live in [`examples/`](examples/).
+
 ## Support
 
 Need help implementing this? [Get in touch](https://fabiocicerchia.it/contact).
