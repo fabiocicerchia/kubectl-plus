@@ -35,6 +35,6 @@ COPY --from=fetch /yq /usr/local/bin/yq
 USER 10001
 # Liveness for the linters; a CLI image has no service, so we just prove the
 # core tool runs. ponytail: swap for a real probe if this ever runs long-lived.
-HEALTHCHECK CMD kubectl version --client >/dev/null 2>&1 || exit 1
+HEALTHCHECK CMD ["/bin/bash", "-c", "kubectl version --client >/dev/null 2>&1 || exit 1"]
 ENTRYPOINT ["/bin/bash", "-c"]
 CMD ["kubectl version --client"]
