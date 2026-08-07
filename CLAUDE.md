@@ -17,7 +17,25 @@ make lint    # hadolint (Dockerfile) + shellcheck (test.sh)
 make test    # build + smoke test (./test.sh)
 make release # buildx multi-arch build & push
 make setup   # install git hooks + pre-commit
+make help    # Show this help
+make push    # Push the tagged image
 ```
+
+## Tooling
+
+Shared config — the GitHub workflows, `.pre-commit-config.yaml`,
+`.editorconfig`, `.hadolint.yaml`, `SECURITY.md` — comes from
+[repo-skeleton](https://github.com/fabiocicerchia/repo-skeleton). Edit it
+there, not here; a local edit is drift and the next sync overwrites it.
+`check-drift.sh` in that repo reports what has diverged.
+
+- `make setup` installs the pre-commit hook, and that is the whole of it.
+  Don't add a `.githooks/` directory: `core.hooksPath` replaces `.git/hooks/`
+  wholesale, so setting it silently stops every pre-commit hook from running.
+- Hooks are pinned by commit SHA with the tag in a trailing comment. A tag can
+  be moved, a SHA cannot.
+- CI runs this same `.pre-commit-config.yaml` through `pre-commit/action`, so
+  what passes locally is what gates the pull request.
 
 ## Conventions
 
