@@ -10,9 +10,8 @@ help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 	  awk 'BEGIN {FS = ":.*?## "}; {printf "  %-10s %s\n", $$1, $$2}'
 
-setup: ## Enable git hooks (gitleaks secret scan on commit)
-	git config core.hooksPath .githooks
-	@command -v pre-commit >/dev/null 2>&1 && pre-commit install || true
+setup: ## Install the pre-commit hook
+	pre-commit install
 
 build: ## Build the image locally
 	# ponytail: --network host — BuildKit's DNS drops dl.k8s.io's IPv6 records and
