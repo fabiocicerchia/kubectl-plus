@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format is based
 on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and tags follow
 the bundled kubectl version.
 
+## [0.1.2](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.1.1...v0.1.2) (2026-08-08)
+
+
+### Bug Fixes
+
+* publish the image from the release job so it actually runs ([5803b63](https://github.com/fabiocicerchia/kubectl-plus/commit/5803b6365bc1715cc9c378f28ca0248a5edbbd73))
+
 ## [0.1.1](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.1.0...v0.1.1) (2026-08-06)
 
 
