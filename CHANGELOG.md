@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format is based
 on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and tags follow
 the bundled kubectl version.
 
+## [0.2.1](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.2.0...v0.2.1) (2026-08-29)
+
+
+### Bug Fixes
+
+* unblock quality and clear the Scorecard pinned-dependencies finding ([#35](https://github.com/fabiocicerchia/kubectl-plus/issues/35)) ([95f2878](https://github.com/fabiocicerchia/kubectl-plus/commit/95f287885f269d74e53cdf4c71797b8a2e0b30ab))
+
 ## [0.2.0](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.1.3...v0.2.0) (2026-08-25)
 
 
