@@ -11,7 +11,7 @@ ARG TARGETARCH=amd64
 # ponytail: apk versions pinned for reproducible builds (hadolint DL3018 / kics).
 # They track alpine:3.24; bump alongside the base image when dependabot updates it.
 SHELL ["/bin/ash", "-o", "pipefail", "-c"]
-RUN apk add --no-cache curl=8.21.0-r0 ca-certificates=20260611-r0
+RUN apk add --no-cache curl=8.22.0-r0 ca-certificates=20260611-r0
 RUN curl -fsSLo /kubectl "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/${TARGETOS}/${TARGETARCH}/kubectl" \
  && curl -fsSLo /kubectl.sha256 "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/${TARGETOS}/${TARGETARCH}/kubectl.sha256" \
  && echo "$(cat /kubectl.sha256)  /kubectl" | sha256sum -c - \
@@ -27,7 +27,7 @@ LABEL org.opencontainers.image.title="kubectl-plus" \
       org.opencontainers.image.licenses="Apache-2.0 AND GPL-3.0-or-later AND MIT" \
       org.opencontainers.image.source="https://github.com/fabiocicerchia/kubectl-plus"
 # gettext provides envsubst
-RUN apk add --no-cache bash=5.3.9-r1 curl=8.21.0-r0 jq=1.8.1-r0 gettext=1.0-r0 ca-certificates=20260611-r0 \
+RUN apk add --no-cache bash=5.3.9-r1 curl=8.22.0-r0 jq=1.8.2-r0 gettext=1.0-r0 ca-certificates=20260611-r0 \
  && adduser -D -u 10001 automation
 COPY NOTICE /NOTICE
 COPY --from=fetch /kubectl /usr/local/bin/kubectl
