@@ -6,7 +6,7 @@ steps.
 
 ## Overview
 
-```
+```text
 Alpine base ─▶ kubectl (pinned, checksum-verified)
              ─▶ jq    (Alpine package)
              ─▶ yq    (mikefarah/yq, pinned release)
