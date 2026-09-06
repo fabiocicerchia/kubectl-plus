@@ -1,8 +1,13 @@
 IMAGE     ?= fabiocicerchia/kubectl-plus
 VERSION   ?= 1.33.2
 PLATFORMS ?= linux/amd64,linux/arm64
+ARGS      ?= kubectl version --client
 
-.PHONY: setup build lint test push release help
+# Every verb this repository exposes lives here; `make` on its own prints them.
+# FC-GEN-057: the same eight verbs in every repo, each either wired or a
+# declared no-op that says why. None of them exit 0 quietly.
+
+.PHONY: help setup install build test lint run format analyze push release
 
 .DEFAULT_GOAL := help
 
@@ -13,17 +18,36 @@ help: ## Show this help
 setup: ## Install the pre-commit hook
 	pre-commit install
 
+install: ## Pull the published image onto this machine
+	docker pull $(IMAGE):$(VERSION)
+
 build: ## Build the image locally
 	# ponytail: --network host — BuildKit's DNS drops dl.k8s.io's IPv6 records and
 	# musl stalls; host DNS resolves fine. Drop the flag if the daemon DNS is fixed.
 	docker build --network host --build-arg KUBECTL_VERSION=$(VERSION) -t $(IMAGE):$(VERSION) .
 
-lint: ## Lint the Dockerfile and shell scripts
-	docker run --rm -i hadolint/hadolint < Dockerfile
-	shellcheck test.sh
-
 test: build ## Build, then run the smoke tests
 	./test.sh $(IMAGE):$(VERSION)
+
+lint: ## Run the whole gate — every hook, every file
+	pre-commit run --all-files
+
+run: build ## Run the image (ARGS is the command, default `kubectl version --client`)
+	docker run --rm -v $(HOME)/.kube:/home/nonroot/.kube:ro $(IMAGE):$(VERSION) '$(ARGS)'
+
+format: ## Rewrite what the gate can fix: whitespace, line endings, final newline
+	@# A fixing hook exits 1 when it rewrites a file. That is this target doing
+	@# its job, not failing, so the exits are ignored — make still prints what
+	@# each hook said.
+	-pre-commit run --all-files trailing-whitespace
+	-pre-commit run --all-files end-of-file-fixer
+	-pre-commit run --all-files mixed-line-ending
+
+analyze: ## Scan the tree the way CI does — vulnerabilities, misconfig, secrets
+	@command -v trivy >/dev/null 2>&1 || { \
+		echo "analyze needs trivy: https://trivy.dev/latest/getting-started/installation/" >&2; \
+		exit 69; }
+	trivy fs --scanners vuln,misconfig,secret --severity CRITICAL,HIGH .
 
 push: build ## Push the tagged image
 	docker push $(IMAGE):$(VERSION)
