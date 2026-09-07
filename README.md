@@ -63,8 +63,28 @@ The entrypoint is `bash -c`, so a Job's `args` can be a plain script string.
 
 ## Development
 
-`make build` / `make lint` / `make test` / `make release` (multi-arch push).
-Override the kubectl version with `make build VERSION=1.32.6`.
+Override the kubectl version with `make build VERSION=1.32.6`, and pass a
+command to `make run` with `ARGS='kubectl get pods -A'`.
+
+### Make targets
+
+`make help` lists them. Every repository in this estate exposes the same eight
+verbs, so you do not have to read a Makefile to find out how to build or test it
+(FC-GEN-057).
+
+| Verb      | What it does here                                          |
+| --------- | ---------------------------------------------------------- |
+| `setup`   | Install the pre-commit hook                                |
+| `install` | `docker pull` the published image                          |
+| `build`   | Build the image locally                                    |
+| `test`    | Build, then run `test.sh` against the image                |
+| `lint`    | `pre-commit run --all-files` — the whole gate              |
+| `run`     | Run the image; `ARGS` is the command                       |
+| `format`  | Rewrite what the gate can fix: whitespace, endings, EOF    |
+| `analyze` | `trivy fs` — the same scan CI runs                         |
+
+`make push` and `make release` publish the image; the release workflow is what
+normally runs them.
 
 ## Documentation
 
