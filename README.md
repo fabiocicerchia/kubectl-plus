@@ -15,14 +15,14 @@ Stop building the same ad-hoc "kubectl but with jq" image in every project.
 
 ## What's inside
 
-| Tool       | Source                          | Why                              |
-|------------|---------------------------------|----------------------------------|
-| `kubectl`  | dl.k8s.io, checksum-verified    | talk to the cluster              |
-| `jq`       | Alpine package                  | slice JSON output                |
-| `yq`       | mikefarah/yq pinned release     | patch manifests                  |
-| `curl`     | Alpine package                  | webhooks, health endpoints       |
-| `envsubst` | gettext                         | template manifests from env vars |
-| `bash`     | Alpine package                  | glue                             |
+| Tool       | Source                       | Why                              |
+| ---------- | ---------------------------- | -------------------------------- |
+| `kubectl`  | dl.k8s.io, checksum-verified | talk to the cluster              |
+| `jq`       | Alpine package               | slice JSON output                |
+| `yq`       | mikefarah/yq pinned release  | patch manifests                  |
+| `curl`     | Alpine package               | webhooks, health endpoints       |
+| `envsubst` | gettext                      | template manifests from env vars |
+| `bash`     | Alpine package               | glue                             |
 
 Runs as non-root (UID 10001). Tags mirror the bundled kubectl version.
 
