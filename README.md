@@ -24,7 +24,8 @@ Stop building the same ad-hoc "kubectl but with jq" image in every project.
 | `envsubst` | gettext                      | template manifests from env vars |
 | `bash`     | Alpine package               | glue                             |
 
-Runs as non-root (UID 10001). Tags mirror the bundled kubectl version.
+Runs as non-root (UID 10001). Image tags mirror this repository's release
+version; the bundled kubectl version is pinned in the Dockerfile.
 
 ## Install
 
@@ -32,10 +33,10 @@ Runs as non-root (UID 10001). Tags mirror the bundled kubectl version.
 docker pull ghcr.io/fabiocicerchia/kubectl-plus:latest
 ```
 
-Or pin a specific version (mirrors the bundled kubectl version):
+Or pin a release:
 
 ```sh
-docker pull ghcr.io/fabiocicerchia/kubectl-plus:1.33.2
+docker pull ghcr.io/fabiocicerchia/kubectl-plus:0.2.1
 ```
 
 ## Usage
@@ -52,7 +53,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: run
-          image: fabiocicerchia/kubectl-plus:1.33.2
+          image: ghcr.io/fabiocicerchia/kubectl-plus:0.2.1
           args:
             - |
               IMAGE_TAG=$(kubectl get deploy my-app -o json | jq -r '.spec.template.spec.containers[0].image')
