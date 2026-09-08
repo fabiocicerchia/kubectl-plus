@@ -1,4 +1,4 @@
-IMAGE     ?= fabiocicerchia/kubectl-plus
+IMAGE     ?= ghcr.io/fabiocicerchia/kubectl-plus
 VERSION   ?= 1.33.2
 PLATFORMS ?= linux/amd64,linux/arm64
 ARGS      ?= kubectl version --client
