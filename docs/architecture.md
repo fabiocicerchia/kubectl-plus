@@ -30,9 +30,10 @@ Alpine base ─▶ kubectl (pinned, checksum-verified)
 
 ## Image tagging
 
-Tags mirror the bundled kubectl version (e.g. `1.33.2`). The `latest` tag
-always points to the most recently released version. Multi-arch builds target
-`linux/amd64` and `linux/arm64`.
+Tags mirror this repository's release version (e.g. `0.2.1`); the bundled
+kubectl version is pinned in the Dockerfile (`KUBECTL_VERSION`). The
+`latest` tag always points to the most recently released version.
+Multi-arch builds target `linux/amd64` and `linux/arm64`.
 
 ## Security posture
 

@@ -13,10 +13,10 @@ Pull the image from GitHub Container Registry:
 docker pull ghcr.io/fabiocicerchia/kubectl-plus:latest
 ```
 
-Or pin to a specific kubectl version:
+Or pin a release:
 
 ```sh
-docker pull ghcr.io/fabiocicerchia/kubectl-plus:1.33.2
+docker pull ghcr.io/fabiocicerchia/kubectl-plus:0.2.1
 ```
 
 ## Run
