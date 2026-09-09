@@ -4,6 +4,19 @@ All notable changes to this project are documented here. The format is based
 on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [0.3.0](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.2.1...v0.3.0) (2026-09-08)
+
+
+### Features
+
+* add the eight-verb repo contract ([#44](https://github.com/fabiocicerchia/kubectl-plus/issues/44)) ([e3d1053](https://github.com/fabiocicerchia/kubectl-plus/commit/e3d10536aac898c442b77c1ba6e86e315dee8ddf))
+
+
+### Bug Fixes
+
+* **ci:** pin the editorconfig-checker binary version ([#40](https://github.com/fabiocicerchia/kubectl-plus/issues/40)) ([8779b65](https://github.com/fabiocicerchia/kubectl-plus/commit/8779b65ee22476ffecb29c8554264d9ea4588561))
+* describe the tag scheme the publish workflow actually uses ([#46](https://github.com/fabiocicerchia/kubectl-plus/issues/46)) ([c123f07](https://github.com/fabiocicerchia/kubectl-plus/commit/c123f0762a8e5624f4474251f0cd2aaf35aa873f))
+
 ## [0.2.1](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.2.0...v0.2.1) (2026-08-29)
 
 ### Bug Fixes
