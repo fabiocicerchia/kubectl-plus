@@ -6,13 +6,55 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 indent_style = space
+indent_size = 4
+# FC-GEN-045. editorconfig-checker runs this in the quality job, so this file is
+# where the 120-column rule is actually enforced rather than merely stated.
+max_line_length = 120
+
+# `jsonc` and `toml` are here for the same reason as `json`: their own
+# ecosystems write two spaces (biome and markdownlint emit JSONC at 2, and every
+# pyproject.toml in the fleet nests its ruff tables at 2). Without them both
+# fall through to the default 4 and editorconfig-checker rejects the file its
+# own tool generated.
+[*.{yml,yaml,json,jsonc,toml,tf,hcl,js,ts}]
 indent_size = 2
 
-[*.{py,go}]
-indent_size = 4
-
-[*.md]
-trim_trailing_whitespace = false
+[*.go]
+indent_style = tab
 
 [Makefile]
 indent_style = tab
+
+# --- Where indentation is alignment, not structure ---
+#
+# editorconfig-checker reads left-padding as arithmetic and cannot tell a
+# hanging indent from a broken one. `unset` below is scoped to the shapes it
+# genuinely gets wrong, so that indentation stays enforced everywhere else —
+# a 3-space YAML block or a space-indented .go file is still an error.
+
+# Prose reflows and nests lists at 2 and 3; a table row or a long link does not
+# wrap at all.
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+indent_size = unset
+
+# Legal text, laid out by its author. Reformatting it to satisfy a linter is not
+# a change anyone should make.
+[{LICENSE,NOTICE}]
+indent_size = unset
+
+# Helm templates: Go template directives carry their own indentation.
+[*.tpl]
+indent_size = unset
+
+# Wrapped block comments, aligned under the opening line.
+[*.{html,css}]
+indent_size = unset
+
+# The scripts here are tab-indented, and shell heredocs make that the practical
+# choice: `<<-EOF` strips leading tabs and nothing else. `indent_style` is unset
+# rather than `tab` because both scripts embed JSON and jq programs, which are
+# space-aligned inside a tab-indented recipe — a mix no single style describes.
+[*.sh]
+indent_style = unset
