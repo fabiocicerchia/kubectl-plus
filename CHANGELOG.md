@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The format is based
 on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [0.3.1](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.3.0...v0.3.1) (2026-09-10)
+
+
+### Bug Fixes
+
+* **publish:** sign the images this workflow pushes ([#55](https://github.com/fabiocicerchia/kubectl-plus/issues/55)) ([421223e](https://github.com/fabiocicerchia/kubectl-plus/commit/421223e5df08ef00c655078e27ff1cd499aee431))
+* **release:** grant id-token on the job that calls the signing workflow ([#56](https://github.com/fabiocicerchia/kubectl-plus/issues/56)) ([d801cc5](https://github.com/fabiocicerchia/kubectl-plus/commit/d801cc5eb37fe79aa62510dde65918f13b632237))
+
 ## [0.3.0](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.2.1...v0.3.0) (2026-09-08)
 
 
