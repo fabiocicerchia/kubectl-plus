@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format is based
 on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [0.3.2](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.3.1...v0.3.2) (2026-09-11)
+
+
+### Bug Fixes
+
+* **release:** let the release PR carry a token that isn't GITHUB_TOKEN ([#59](https://github.com/fabiocicerchia/kubectl-plus/issues/59)) ([ec039c1](https://github.com/fabiocicerchia/kubectl-plus/commit/ec039c109a971ab6c84c20c561d861ebde3816f2))
+
 ## [0.3.1](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.3.0...v0.3.1) (2026-09-10)
 
 
