@@ -1,0 +1,23 @@
+# Backstage catalog entry, read by paved's scorecard plugin.
+#
+# Every check paved scores is derived from this file alone — no cluster
+# access, no CI credentials. What is absent here is absent from the score.
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kubectl-plus
+  description: >-
+      Drop-in kubectl wrapper that adds multi-cluster shortcuts, alias management, and common operational
+      one-liners without breaking existing muscle memory.
+  annotations:
+    github.com/project-slug: fabiocicerchia/kubectl-plus
+    backstage.io/source-location: url:https://github.com/fabiocicerchia/kubectl-plus/
+    backstage.io/techdocs-ref: dir:.
+  links:
+    - url: https://github.com/fabiocicerchia/kubectl-plus
+      title: Source
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/kodebeat
+  system: oss-tools
