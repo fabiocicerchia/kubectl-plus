@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The format is based
 on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [0.3.3](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.3.2...v0.3.3) (2026-09-20)
+
+
+### Bug Fixes
+
+* **ci:** keep actions: read on the job that uploads sarif ([#69](https://github.com/fabiocicerchia/kubectl-plus/issues/69)) ([f3d45db](https://github.com/fabiocicerchia/kubectl-plus/commit/f3d45dbbfa716e010b0a9495a783e4202d3463fc))
+* **ci:** keep actions: read on the job that uploads sarif ([#73](https://github.com/fabiocicerchia/kubectl-plus/issues/73)) ([50174b5](https://github.com/fabiocicerchia/kubectl-plus/commit/50174b5283ecaf6eb7b0694f4bab68ccaf147397))
+* **docker:** bump ca-certificates pin to 20260909-r0 ([#68](https://github.com/fabiocicerchia/kubectl-plus/issues/68)) ([61e01da](https://github.com/fabiocicerchia/kubectl-plus/commit/61e01dadd4cc8e90a670863a9d9ee70d65544346))
+* **docker:** bump ca-certificates to the version alpine 3.24 still has ([#70](https://github.com/fabiocicerchia/kubectl-plus/issues/70)) ([83bb7f5](https://github.com/fabiocicerchia/kubectl-plus/commit/83bb7f5cfc5887bf5b22e6e428195991a2269f55))
+
 ## [0.3.2](https://github.com/fabiocicerchia/kubectl-plus/compare/v0.3.1...v0.3.2) (2026-09-11)
 
 
