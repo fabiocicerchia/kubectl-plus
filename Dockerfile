@@ -3,7 +3,7 @@
 ARG KUBECTL_VERSION=1.33.2
 ARG YQ_VERSION=4.45.4
 
-FROM alpine:3.24@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6 AS fetch
+FROM alpine:3.24@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a AS fetch
 ARG KUBECTL_VERSION
 ARG YQ_VERSION
 ARG TARGETOS=linux
@@ -19,7 +19,7 @@ RUN curl -fsSLo /kubectl "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/${TA
 RUN curl -fsSLo /yq "https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_${TARGETOS}_${TARGETARCH}" \
  && chmod 0755 /yq
 
-FROM alpine:3.24@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6
+FROM alpine:3.24@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a
 ARG KUBECTL_VERSION
 LABEL org.opencontainers.image.title="kubectl-plus" \
       org.opencontainers.image.description="kubectl + jq + yq + curl + envsubst for in-cluster automation jobs" \
