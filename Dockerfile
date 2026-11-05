@@ -3,7 +3,7 @@
 ARG KUBECTL_VERSION=1.33.2
 ARG YQ_VERSION=4.45.4
 
-FROM alpine:3.24@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6 AS fetch
+FROM alpine:3.24@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a AS fetch
 ARG KUBECTL_VERSION
 ARG YQ_VERSION
 ARG TARGETOS=linux
@@ -11,7 +11,7 @@ ARG TARGETARCH=amd64
 # ponytail: apk versions pinned for reproducible builds (hadolint DL3018 / kics).
 # They track alpine:3.24; bump alongside the base image when dependabot updates it.
 SHELL ["/bin/ash", "-o", "pipefail", "-c"]
-RUN apk add --no-cache curl=8.22.0-r0 ca-certificates=20261020-r0
+RUN apk add --no-cache curl=8.23.0-r0 ca-certificates=20261020-r0
 RUN curl -fsSLo /kubectl "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/${TARGETOS}/${TARGETARCH}/kubectl" \
  && curl -fsSLo /kubectl.sha256 "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/${TARGETOS}/${TARGETARCH}/kubectl.sha256" \
  && echo "$(cat /kubectl.sha256)  /kubectl" | sha256sum -c - \
@@ -19,7 +19,7 @@ RUN curl -fsSLo /kubectl "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/${TA
 RUN curl -fsSLo /yq "https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_${TARGETOS}_${TARGETARCH}" \
  && chmod 0755 /yq
 
-FROM alpine:3.24@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6
+FROM alpine:3.24@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a
 ARG KUBECTL_VERSION
 LABEL org.opencontainers.image.title="kubectl-plus" \
       org.opencontainers.image.description="kubectl + jq + yq + curl + envsubst for in-cluster automation jobs" \
@@ -27,7 +27,7 @@ LABEL org.opencontainers.image.title="kubectl-plus" \
       org.opencontainers.image.licenses="Apache-2.0 AND GPL-3.0-or-later AND MIT" \
       org.opencontainers.image.source="https://github.com/fabiocicerchia/kubectl-plus"
 # gettext provides envsubst
-RUN apk add --no-cache bash=5.3.9-r1 curl=8.22.0-r0 jq=1.8.2-r0 gettext=1.0-r0 ca-certificates=20261020-r0 \
+RUN apk add --no-cache bash=5.3.9-r1 curl=8.23.0-r0 jq=1.8.2-r0 gettext=1.0-r0 ca-certificates=20261020-r0 \
  && adduser -D -u 10001 automation
 COPY NOTICE /NOTICE
 COPY --from=fetch /kubectl /usr/local/bin/kubectl
