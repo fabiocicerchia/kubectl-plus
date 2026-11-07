@@ -1,0 +1,599 @@
+{
+ "excluded": {
+  "docs/stylesheets": [
+   {
+    "candidate": "Translucent blurred header and tabs with hairline divider and shadow on scroll",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-header"
+   },
+   {
+    "candidate": "Heading weights, letter-spacing and kerning/ligature settings",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-typeset h1"
+   },
+   {
+    "candidate": "Rounded, bordered code blocks",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-typeset .highlight"
+   },
+   {
+    "candidate": "Tables scroll on narrow screens instead of clipping (comment claims it, but the rule sets overflow: hidden; any scrolling comes from Material's own wrapper)",
+    "covered_by": "",
+    "reason": "UNVERIFIABLE",
+    "source": "docs/stylesheets/extra.css#.md-typeset table:not([class])"
+   },
+   {
+    "candidate": "Uppercase small table headers",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-typeset table:not([class]) th"
+   },
+   {
+    "candidate": "Sidebar nav title and active link weights",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-nav__title"
+   },
+   {
+    "candidate": "Footer background, divider and muted link colour",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-footer-meta"
+   },
+   {
+    "candidate": "Smooth scrolling for in-page anchors",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#html"
+   },
+   {
+    "candidate": "Tab link opacity on hover/active",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "docs/stylesheets/extra.css#.md-tabs__link"
+   }
+  ],
+  "kubectl-plus/dockerfile": [
+   {
+    "candidate": "Multi-stage build: a fetch stage downloads binaries and a separate runtime stage copies them",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Dockerfile#fetch"
+   },
+   {
+    "candidate": "Alpine base image pinned by digest",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Dockerfile#FROM alpine:3.24"
+   },
+   {
+    "candidate": "apk package versions pinned for reproducible builds (hadolint DL3018)",
+    "covered_by": "toolbox.tools.pinned-versions",
+    "reason": "TECH_BUILD",
+    "source": "Dockerfile#RUN apk add"
+   },
+   {
+    "candidate": "Build-time overrides of KUBECTL_VERSION and YQ_VERSION",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Dockerfile#ARG KUBECTL_VERSION"
+   },
+   {
+    "candidate": "TARGETOS/TARGETARCH choose the per-architecture kubectl and yq binaries",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Dockerfile#fetch"
+   },
+   {
+    "candidate": "pipefail shell in the fetch stage",
+    "covered_by": "",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "Dockerfile#SHELL"
+   },
+   {
+    "candidate": "kubectl and yq binaries installed with mode 0755",
+    "covered_by": "toolbox.tools.all-bundled-tools-on-path",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "Dockerfile#fetch"
+   },
+   {
+    "candidate": "Every bundled tool can be run by name",
+    "covered_by": "",
+    "reason": "UNVERIFIABLE",
+    "source": "Dockerfile#RUN apk add bash curl jq gettext"
+   },
+   {
+    "candidate": "Tools can reach HTTPS endpoints with publicly trusted certificates",
+    "covered_by": "",
+    "reason": "UNVERIFIABLE",
+    "source": "Dockerfile#RUN apk add bash curl jq gettext"
+   }
+  ],
+  "kubectl-plus/install": [
+   {
+    "candidate": "Script uses a bash shebang and strict mode (set -u, pipefail)",
+    "covered_by": "",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "install.sh#IMAGE"
+   },
+   {
+    "candidate": "Usage comment documenting the curl | bash one-liner URL",
+    "covered_by": "",
+    "reason": "TRIVIAL",
+    "source": "install.sh#IMAGE"
+   },
+   {
+    "candidate": "install.sh is shellchecked in CI",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": ".github/workflows/ci.yml"
+   }
+  ],
+  "kubectl-plus/makefile": [
+   {
+    "candidate": "make build builds the image for VERSION with --network host",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#build"
+   },
+   {
+    "candidate": "make test builds then runs ./test.sh smoke tests",
+    "covered_by": "",
+    "reason": "TECH_DEVTOOLING",
+    "source": "Makefile#test"
+   },
+   {
+    "candidate": "make lint runs every pre-commit hook on all files",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#lint"
+   },
+   {
+    "candidate": "make setup installs the pre-commit hook",
+    "covered_by": "",
+    "reason": "TECH_DEVTOOLING",
+    "source": "Makefile#setup"
+   },
+   {
+    "candidate": "make format runs the whitespace/EOF/line-ending fixers and ignores their non-zero exits",
+    "covered_by": "",
+    "reason": "TECH_DEVTOOLING",
+    "source": "Makefile#format"
+   },
+   {
+    "candidate": "make push builds and pushes IMAGE:VERSION",
+    "covered_by": "",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#push"
+   },
+   {
+    "candidate": "make release buildx-builds linux/amd64,linux/arm64 and pushes the version and latest tags",
+    "covered_by": "releases are cut by the vX.Y.Z tag workflow (.github/workflows/release.yml), which owns the published-tags contract",
+    "reason": "TECH_BUILD",
+    "source": "Makefile#release"
+   },
+   {
+    "candidate": "IMAGE/VERSION/PLATFORMS/ARGS are overridable variables",
+    "covered_by": "",
+    "reason": "INTERNAL_MECHANISM",
+    "source": "Makefile#IMAGE"
+   }
+  ],
+  "kubectl-plus/mdl-style": [
+   {
+    "candidate": "All markdownlint rules are enabled by default",
+    "covered_by": "",
+    "reason": "TECH_DEVTOOLING",
+    "source": ".mdl_style.rb#all"
+   },
+   {
+    "candidate": "Markdown lines may be at most 100 characters, except in tables and fenced code blocks",
+    "covered_by": "",
+    "reason": "TECH_DEVTOOLING",
+    "source": ".mdl_style.rb#MD013"
+   },
+   {
+    "candidate": "Ordered lists must be numbered in sequence (1. 2. 3.)",
+    "covered_by": "",
+    "reason": "TECH_DEVTOOLING",
+    "source": ".mdl_style.rb#MD029"
+   },
+   {
+    "candidate": "Documents need not start with a top-level H1 heading (for GitHub issue and PR templates)",
+    "covered_by": "",
+    "reason": "TECH_DEVTOOLING",
+    "source": ".mdl_style.rb#MD002"
+   },
+   {
+    "candidate": "The first line need not be a top-level heading (for templates with front matter)",
+    "covered_by": "",
+    "reason": "TECH_DEVTOOLING",
+    "source": ".mdl_style.rb#MD041"
+   }
+  ]
+ },
+ "lifted": {
+  "docs/stylesheets": [
+   {
+    "from_source": "mkdocs.yml#theme",
+    "rule": "documentation.theme.no-network-loaded-assets"
+   }
+  ],
+  "kubectl-plus/dockerfile": [
+   {
+    "from_source": "Dockerfile#fetch",
+    "rule": "toolbox.security.kubectl-checksum-verified"
+   },
+   {
+    "from_source": "Dockerfile#fetch",
+    "rule": "toolbox.security.yq-not-checksum-verified"
+   }
+  ],
+  "kubectl-plus/install": [],
+  "kubectl-plus/makefile": [],
+  "kubectl-plus/mdl-style": []
+ },
+ "retired": [],
+ "scenarios": {
+  "developer-tooling.command-help.001": {
+   "file": "specs/developer-tooling/command-help/command-help.feature",
+   "fingerprint": "517de792f113",
+   "human": false,
+   "rule": "devtooling.help.default-lists-commands",
+   "source": "Makefile#help",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "developer-tooling.security-scanning.001": {
+   "file": "specs/developer-tooling/security-scanning/security-scan.feature",
+   "fingerprint": "eee6cffaed8d",
+   "human": false,
+   "rule": "devtooling.scan.requires-trivy",
+   "source": "Makefile#analyze",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "developer-tooling.security-scanning.002": {
+   "file": "specs/developer-tooling/security-scanning/security-scan.feature",
+   "fingerprint": "eee6cffaed8d",
+   "human": false,
+   "rule": "devtooling.scan.high-and-critical-findings",
+   "source": "Makefile#analyze",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "distribution.local-usage.001": {
+   "file": "specs/distribution/local-usage/local-run.feature",
+   "fingerprint": "d3607ae67ec0",
+   "human": false,
+   "rule": "distribution.local-run.runs-given-command",
+   "source": "Makefile#run",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "distribution.local-usage.002": {
+   "file": "specs/distribution/local-usage/local-run.feature",
+   "fingerprint": "d3607ae67ec0",
+   "human": false,
+   "rule": "distribution.local-run.kubeconfig-read-only",
+   "source": "Makefile#run",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "distribution.local-usage.003": {
+   "file": "specs/distribution/local-usage/local-run.feature",
+   "fingerprint": "61700039fdeb",
+   "human": false,
+   "rule": "distribution.local-install.pulls-chosen-version",
+   "source": "Makefile#install",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "distribution.one-line-install.001": {
+   "file": "specs/distribution/one-line-install/one-line-install.feature",
+   "fingerprint": "8caed0d4869e",
+   "human": false,
+   "rule": "distribution.install.pulls-latest-from-ghcr",
+   "source": "install.sh#IMAGE",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "distribution.one-line-install.002": {
+   "file": "specs/distribution/one-line-install/one-line-install.feature",
+   "fingerprint": "8caed0d4869e",
+   "human": false,
+   "rule": "distribution.install.stops-on-pull-failure",
+   "source": "install.sh#IMAGE",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "distribution.one-line-install.003": {
+   "file": "specs/distribution/one-line-install/one-line-install.feature",
+   "fingerprint": "8caed0d4869e",
+   "human": false,
+   "rule": "distribution.install.prints-example-usage",
+   "source": "install.sh#IMAGE",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "documentation.page-components.001": {
+   "file": "specs/documentation/page-components/docs-page-components.feature",
+   "fingerprint": "795e359e9240",
+   "human": false,
+   "rule": "documentation.components.hero-gradient-title",
+   "source": "docs/stylesheets/extra.css#.md-typeset .hero",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "documentation.page-components.002": {
+   "file": "specs/documentation/page-components/docs-page-components.feature",
+   "fingerprint": "777790f3897f",
+   "human": false,
+   "rule": "documentation.components.primary-button-gradient",
+   "source": "docs/stylesheets/extra.css#.md-typeset .md-button",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "documentation.page-components.003": {
+   "file": "specs/documentation/page-components/docs-page-components.feature",
+   "fingerprint": "9606b3669194",
+   "human": false,
+   "rule": "documentation.components.feature-card-hover",
+   "source": "docs/stylesheets/extra.css#.md-typeset .grid.cards > ul > li",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "documentation.site-theme.001": {
+   "file": "specs/documentation/site-theme/docs-site-theme.feature",
+   "fingerprint": "564588beee72",
+   "human": false,
+   "rule": "documentation.theme.shared-accent-palette",
+   "source": "docs/stylesheets/extra.css#:root",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "documentation.site-theme.002": {
+   "file": "specs/documentation/site-theme/docs-site-theme.feature",
+   "fingerprint": "564588beee72",
+   "human": false,
+   "rule": "documentation.theme.no-network-loaded-assets",
+   "source": "docs/stylesheets/extra.css#:root",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "documentation.site-theme.003": {
+   "file": "specs/documentation/site-theme/docs-site-theme.feature",
+   "fingerprint": "433084a194b6",
+   "human": false,
+   "rule": "documentation.theme.legible-links-per-scheme",
+   "source": "docs/stylesheets/extra.css#[data-md-color-scheme=\"slate\"]",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "documentation.site-theme.004": {
+   "file": "specs/documentation/site-theme/docs-site-theme.feature",
+   "fingerprint": "c702704e5aae",
+   "human": false,
+   "rule": "documentation.theme.no-placeholder-logo",
+   "source": "docs/stylesheets/extra.css#.md-header__button.md-logo",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "toolbox-image.bundled-tools.001": {
+   "file": "specs/toolbox-image/bundled-tools/bundled-tools.feature",
+   "fingerprint": "11ef98a479e3",
+   "human": false,
+   "rule": "toolbox.tools.pinned-versions",
+   "source": "Dockerfile#ARG KUBECTL_VERSION",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "toolbox-image.command-execution.001": {
+   "file": "specs/toolbox-image/command-execution/command-execution.feature",
+   "fingerprint": "337db525da7d",
+   "human": false,
+   "rule": "toolbox.exec.default-prints-kubectl-version",
+   "source": "Dockerfile#CMD",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "toolbox-image.command-execution.002": {
+   "file": "specs/toolbox-image/command-execution/command-execution.feature",
+   "fingerprint": "bbb446ba4961",
+   "human": false,
+   "rule": "toolbox.exec.script-string-runs-in-bash",
+   "source": "Dockerfile#ENTRYPOINT",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "toolbox-image.command-execution.003": {
+   "file": "specs/toolbox-image/command-execution/command-execution.feature",
+   "fingerprint": "bbb446ba4961",
+   "human": false,
+   "rule": "toolbox.exec.script-failure-fails-container",
+   "source": "Dockerfile#ENTRYPOINT",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "toolbox-image.health-and-metadata.001": {
+   "file": "specs/toolbox-image/health-and-metadata/health-and-metadata.feature",
+   "fingerprint": "337db525da7d",
+   "human": false,
+   "rule": "toolbox.health.healthy-when-kubectl-runs",
+   "source": "Dockerfile#HEALTHCHECK",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "toolbox-image.health-and-metadata.002": {
+   "file": "specs/toolbox-image/health-and-metadata/health-and-metadata.feature",
+   "fingerprint": "14ecf5910e84",
+   "human": false,
+   "rule": "toolbox.metadata.oci-labels",
+   "source": "Dockerfile#LABEL",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "toolbox-image.health-and-metadata.003": {
+   "file": "specs/toolbox-image/health-and-metadata/health-and-metadata.feature",
+   "fingerprint": "bbe4a95d467b",
+   "human": false,
+   "rule": "toolbox.metadata.notice-bundled",
+   "source": "Dockerfile#COPY NOTICE",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "toolbox-image.runtime-security.001": {
+   "file": "specs/toolbox-image/runtime-security/runtime-security.feature",
+   "fingerprint": "de54fcdc73a7",
+   "human": false,
+   "rule": "toolbox.security.runs-as-non-root",
+   "source": "Dockerfile#USER",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "toolbox-image.runtime-security.002": {
+   "file": "specs/toolbox-image/runtime-security/runtime-security.feature",
+   "fingerprint": "9e5225ad56a5",
+   "human": false,
+   "rule": "toolbox.security.kubectl-checksum-verified",
+   "source": "Dockerfile#fetch",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  },
+  "toolbox-image.runtime-security.003": {
+   "file": "specs/toolbox-image/runtime-security/runtime-security.feature",
+   "fingerprint": "9e5225ad56a5",
+   "human": false,
+   "rule": "toolbox.security.yq-not-checksum-verified",
+   "source": "Dockerfile#fetch",
+   "status": "inferred",
+   "test": "",
+   "tests": []
+  }
+ },
+ "taxonomy": {
+  "domains": [
+   {
+    "areas": [
+     {
+      "description": "kubectl, yq, jq, curl, envsubst (gettext) and bash available on the image's PATH at pinned versions.",
+      "slug": "bundled-tools",
+      "title": "Bundled tools"
+     },
+     {
+      "description": "Bash entrypoint that runs any passed command string, defaulting to printing the kubectl client version.",
+      "slug": "command-execution",
+      "title": "Command execution"
+     },
+     {
+      "description": "Non-root automation user, minimal Alpine base pinned by digest, and checksum-verified kubectl download.",
+      "slug": "runtime-security",
+      "title": "Runtime security"
+     },
+     {
+      "description": "Container healthcheck proving kubectl runs, plus OCI labels for title, version, licenses and source, and the bundled NOTICE.",
+      "slug": "health-and-metadata",
+      "title": "Health check and image metadata"
+     }
+    ],
+    "description": "The container image itself: which CLI tools it ships and how it behaves when run.",
+    "slug": "toolbox-image",
+    "title": "Automation toolbox image"
+   },
+   {
+    "areas": [
+     {
+      "description": "curl-pipe-bash script that pulls the latest image from GHCR and prints example usage.",
+      "slug": "one-line-install",
+      "title": "One-line installer"
+     },
+     {
+      "description": "Pulling a specific version and running it locally with the user's kubeconfig mounted read-only.",
+      "slug": "local-usage",
+      "title": "Local pull and run"
+     },
+     {
+      "description": "Building amd64 and arm64 images with buildx and pushing version and latest tags to the registry.",
+      "slug": "multi-arch-release",
+      "title": "Multi-arch release"
+     }
+    ],
+    "description": "How users obtain the image and how new versions are published.",
+    "slug": "distribution",
+    "title": "Distribution and installation"
+   },
+   {
+    "areas": [
+     {
+      "description": "Building the image for a chosen kubectl version and running smoke tests against it.",
+      "slug": "local-build-and-test",
+      "title": "Local build and smoke test"
+     },
+     {
+      "description": "Pre-commit hook setup, the full lint gate, auto-fixing formatting, and Markdown style rules.",
+      "slug": "quality-gates",
+      "title": "Linting and formatting"
+     },
+     {
+      "description": "Trivy scan of the tree for vulnerabilities, misconfigurations and secrets, mirroring CI.",
+      "slug": "security-scanning",
+      "title": "Security scanning"
+     },
+     {
+      "description": "Self-documenting make targets listed by the default help command.",
+      "slug": "command-help",
+      "title": "Command discovery"
+     }
+    ],
+    "description": "Build, test and quality gates used by contributors to work on the image.",
+    "slug": "developer-tooling",
+    "title": "Developer tooling"
+   },
+   {
+    "areas": [
+     {
+      "description": "Shared accent palette, system typography and visual styling for the docs and splash page with no network-loaded assets.",
+      "slug": "site-theme",
+      "title": "Site theme and branding"
+     },
+     {
+      "description": "Styled hero, feature cards, buttons and other content blocks used across documentation pages.",
+      "slug": "page-components",
+      "title": "Page components"
+     }
+    ],
+    "description": "The published docs and splash page that explain the product.",
+    "slug": "documentation",
+    "title": "Documentation site"
+   }
+  ]
+ }
+}
