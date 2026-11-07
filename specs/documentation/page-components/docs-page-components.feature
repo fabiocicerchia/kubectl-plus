@@ -27,4 +27,4 @@ Feature: Presenting documentation page components
     Given a page contains a grid of feature cards with icons
     When the reader hovers over a card
     Then each card is a rounded, bordered tile with its icon in light blue #38bdf8
-    And the hovered card rises slightly, gains a shadow and its border takes on the accent colour
+    And the hovered card rises slightly, gains a shadow and its border takes on a faint light-blue accent tint

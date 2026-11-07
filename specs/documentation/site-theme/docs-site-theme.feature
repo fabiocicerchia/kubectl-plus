@@ -10,7 +10,8 @@ Feature: Branding the documentation site
     Given the site's accent pair is light blue #38bdf8 and blue #3b82f6
     When a reader opens the splash page and then the rendered docs
     Then the splash page title and buttons use the same light-blue-to-blue gradient as the docs hero and primary buttons
-    And the docs header, primary colour and links use the blue #3b82f6
+    And the docs primary colour and links in the light scheme use the blue #3b82f6
+    And the docs header takes the page background colour, not the blue
     And changing the accent pair in the one theme stylesheet changes both the splash page and the docs
 
   @id:documentation.site-theme.002 @rule:documentation.theme.no-network-loaded-assets @inferred @source:docs/stylesheets/extra.css#:root

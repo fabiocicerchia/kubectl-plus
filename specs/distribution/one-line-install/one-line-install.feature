@@ -22,7 +22,7 @@ Feature: Installing kubectl-plus with one command
     And the operator does not see "kubectl-plus ready"
 
   @id:distribution.one-line-install.003 @rule:distribution.install.prints-example-usage @inferred @source:install.sh#IMAGE @questionable
-  Scenario: The installer shows an example command for running the image against the operator's cluster
-    Given the image has been pulled
+  Scenario: The installer prints an example docker run command once the pull succeeds
+    Given the image pull succeeds
     When the operator runs the one-line installer
     Then the operator sees the example "docker run --rm -v ~/.kube:/home/nonroot/.kube:ro ghcr.io/fabiocicerchia/kubectl-plus:latest get pods -A"
