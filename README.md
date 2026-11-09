@@ -1,5 +1,11 @@
 # kubectl-plus
 
+> [!WARNING]
+> **This project is retired** and no longer maintained. If you need something
+> for this, [alpine-docker/k8s](https://github.com/alpine-docker/k8s) packs
+> kubectl, helm and the usual Kubernetes tooling into one image. It is a
+> separate project, actively developed, and worth a look.
+
 [![CI](https://github.com/fabiocicerchia/kubectl-plus/actions/workflows/ci.yml/badge.svg)](https://github.com/fabiocicerchia/kubectl-plus/actions/workflows/ci.yml)
 [![Security](https://github.com/fabiocicerchia/kubectl-plus/actions/workflows/security.yml/badge.svg)](https://github.com/fabiocicerchia/kubectl-plus/actions/workflows/security.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
